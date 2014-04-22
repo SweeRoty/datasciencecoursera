@@ -1,16 +1,14 @@
 Getting and Cleaning Data Project
 =================================
-This README file explains the working flow of the "run_analysis.R" script
+This README file explains the working flow of the run_analysis.R script
 
 1. Load the feature names and activity labels from the text file "features.txt" and "activity_labels.txt" in the working directory.
-<pre><code>
-	feature.names &lt;- read.table("features.txt")
+<pre><code>feature.names &lt;- read.table("features.txt")
 	activity.labels &lt;- read.table("activity_labels.txt")
 </code></pre>
 
 2. Set the filenames of the X, y and subject data in both training and test set to corresponding character variables.
-<pre><code>
-	x.train.name &lt;- "train/X_train.txt"
+<pre><code>x.train.name &lt;- "train/X_train.txt"
 	y.train.name &lt;- "train/y_train.txt"
 	subject.train.name &lt;- "train/subject_train.txt"
 	x.test.name &lt;- "test/X_test.txt"
@@ -19,8 +17,7 @@ This README file explains the working flow of the "run_analysis.R" script
 </code></pre>
 
 3. Extract the mean and standard deviation for measurements in X and then merge it with y and subject data using descriptive names for each variable name
-<pre><code>
-	extract &lt;- function(x.name, y.name, subject.name) {
+<pre><code>extract &lt;- function(x.name, y.name, subject.name) {
 		subject &lt;- read.table(subject.name)
 		names(subject) &lt;- c("subject")
 		x &lt;- read.table(x.name)
@@ -48,6 +45,11 @@ This README file explains the working flow of the "run_analysis.R" script
 	data &lt;- rbind(data.train, data.test)
 </code></pre>
 
-4. Reshape the data
-
+4. Get a tidy data set with the average of each variable for each activity and each subject using melt and dcast functions in reshape2 package.
+<pre><code>library(reshape2)
+variable.names <- names(data)[2:(length(names(data)) - 1)]
+data.melting <- melt(data, id = c("subject", "activity_label"), measure.vars = variable.names)
+data.casting <- dcast(data.melting, subject + activity_label ~ variable , mean)
+write.table(data.casting, file = "dataset.txt")
+</code></pre>
 
