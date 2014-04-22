@@ -16,7 +16,7 @@ This README file explains the working flow of the run_analysis.R script
 	subject.text.name &lt;- "test/subject_test.txt"
 </code></pre>
 
-3. Extract the mean and standard deviation for measurements in X and then merge it with y and subject data using descriptive names for each variable name
+3. Extract the mean and standard deviation for measurements in X and then merge it with y and subject data using descriptive names for each variable and different activities.
 <pre><code>extract &lt;- function(x.name, y.name, subject.name) {
 		subject &lt;- read.table(subject.name)
 		names(subject) &lt;- c("subject")
@@ -47,9 +47,9 @@ This README file explains the working flow of the run_analysis.R script
 
 4. Get a tidy data set with the average of each variable for each activity and each subject using melt and dcast functions in reshape2 package.
 <pre><code>library(reshape2)
-variable.names <- names(data)[2:(length(names(data)) - 1)]
-data.melting <- melt(data, id = c("subject", "activity_label"), measure.vars = variable.names)
-data.casting <- dcast(data.melting, subject + activity_label ~ variable , mean)
+variable.names &lt;- names(data)[2:(length(names(data)) - 1)]
+data.melting &lt;- melt(data, id = c("subject", "activity_label"), measure.vars = variable.names)
+data.casting &lt;- dcast(data.melting, subject + activity_label ~ variable , mean)
 write.table(data.casting, file = "dataset.txt")
 </code></pre>
 
