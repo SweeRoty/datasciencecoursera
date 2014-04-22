@@ -45,7 +45,7 @@ This README file explains the working flow of the run_analysis.R script
 	data &lt;- rbind(data.train, data.test)
 </code></pre>
 
-4. Get a tidy data set with the average of each variable for each activity and each subject using melt and dcast functions in reshape2 package.
+4. Get a tidy data set with the average of each variable for each activity and each subject using melt and dcast functions in reshape2 package. Then output the data set to a text file in the working directory.
 <pre><code>library(reshape2)
 variable.names &lt;- names(data)[2:(length(names(data)) - 1)]
 data.melting &lt;- melt(data, id = c("subject", "activity_label"), measure.vars = variable.names)
