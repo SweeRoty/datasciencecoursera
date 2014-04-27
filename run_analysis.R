@@ -26,7 +26,7 @@ extract <- function(x.name, y.name, subject.name) {
 	y <- read.table(y.name)
 	y$V1 <- as.factor(y$V1)
 	levels(y$V1) <- activity.labels$V2
-	names(y) <- c("activity_label")
+	names(y) <- c("activity_name")
 	data <- cbind(subject, x.sub, y)
 	invisible(data)
 }
