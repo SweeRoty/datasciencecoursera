@@ -39,7 +39,6 @@ This README file explains the working flow of the "run_analysis.R" script.
 		data &lt;- cbind(subject, x.sub, y)
 		invisible(data)
 	}
-
 	data.train &lt;- extract(x.train.name, y.train.name, subject.train.name)
 	data.test &lt;- extract(x.test.name, y.test.name, subject.text.name)
 	data &lt;- rbind(data.train, data.test)
