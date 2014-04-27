@@ -1,6 +1,6 @@
 Getting and Cleaning Data Project
 =================================
-This README file explains the working flow of the "run_analysis.R" script
+This README file explains the working flow of the "run_analysis.R" script.
 
 1. Load the feature names and activity names from the text file "features.txt" and "activity_labels.txt" in the working directory.
 <pre><code>feature.names &lt;- read.table("features.txt")
