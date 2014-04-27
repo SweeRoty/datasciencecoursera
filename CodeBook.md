@@ -21,5 +21,5 @@ According to the following R variable name restrictions:
 </code></pre>
 Trasformations below have been performed by using the "gsub" function to make the variable name valid:
 <pre><code>name.valid &lt;- gsub("-", "_", name)	             # replace all the "-" with "_" in the variable names
-    name.valid &lt;- gsub("\\(\\)", "", name.valiid)	 # delete all the "(" and "}" in the variable names
+    name.valid &lt;- gsub("\\(\\)", "", name.valiid)	  # delete all the "(" and "}" in the variable names
 </code></pre>	

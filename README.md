@@ -16,7 +16,7 @@ This README file explains the working flow of the run_analysis.R script
 	subject.text.name &lt;- "test/subject_test.txt"
 </code></pre>
 
-3. Extract the mean and standard deviation for measurements in X and then merge it with y and subject data using descriptive names for each variable and different activities.
+3. The "extract" function extracts the mean and standard deviation for measurements in X; then maps the activity label to its corresponding name; at last, it combines X, y and the subject data. All the viriable names are descriptive and following R variable name restrictions.
 <pre><code>extract &lt;- function(x.name, y.name, subject.name) {
 		subject &lt;- read.table(subject.name)
 		names(subject) &lt;- c("subject")
@@ -45,7 +45,7 @@ This README file explains the working flow of the run_analysis.R script
 	data &lt;- rbind(data.train, data.test)
 </code></pre>
 
-4. Get a tidy data set with the average of each variable for each activity and each subject using melt and dcast functions in reshape2 package. Then output the data set to a text file in the working directory.
+4. Get a tidy dataset with the average of each variable for each activity and each subject using melt and dcast functions in reshape2 package. Then output the dataset to a text file in the working directory.
 <pre><code>library(reshape2)
 variable.names &lt;- names(data)[2:(length(names(data)) - 1)]
 data.melting &lt;- melt(data, id = c("subject", "activity_label"), measure.vars = variable.names)
